@@ -1,0 +1,16 @@
+//@version=6
+indicator("Elliott Wave Pro", overlay=true)
+
+// === Inputs ===
+showLabels = input.bool(true, "Show Labels")
+
+// === Pivot Detection ===
+ph = ta.pivothigh(high, 5, 5)
+pl = ta.pivotlow(low, 5, 5)
+
+// === Plot Labels ===
+if not na(ph)
+    label.new(bar_index - 5, ph, "H", style=label.style_label_down, color=color.red, textcolor=color.white)
+
+if not na(pl)
+    label.new(bar_index - 5, pl, "L", style=label.style_label_up, color=color.green, textcolor=color.white)
